@@ -18,18 +18,36 @@ for(my $i=2015 ; $i>=2007 ; $i--)
 }
 close(tempFile);
 open( tempFile , "<tempNumberOut") or die "can't touch the file !";
+my $count=0;
 while(<tempFile>)
 {
 	if(/[0-9]{9,11}/)
 	{
-		s/^ *//g;
-		print File;
+		$count++;
+		chomp;
+		chop;
+		s/^\s*//g;
+		s/ *$//g;
+		print File "$_\t";
 	}
-	if(/\b[0-9]{2} /)
+	if(/[0-9]{4}-[0-9]{2}-[0-9]{2}/)
 	{
-		s/^ *//g;
-		print File;
+		$count++;
+		chomp;
+		chop;
+		s/^\s*//g;
+		s/ *$//g;
+		print File "$_\t";
+	}
+	if(/\b[0-9]{2} [0-9]{2}/)
+	{
+		$count++;
+		chomp;
+		chop;
+		s/^\s*//g;
+		s/ *$//g;
+		if(($count%4)==0){print File "$_\n";}
+		else{print File "$_\t";}
 	}
 }
 system "rm tempNumberOut";
-system "/home/nlp/tool/dataMining/outTrainingData.sh $File"
