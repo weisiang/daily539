@@ -14,8 +14,8 @@ my %uniProb ; my %biProb ; my %triProb ; my %fourProb ; my %fiveProb ;
 my $minimum=0;
 open( txtFile, $ARGV[0]) or die "don't open 539 txt file";
 open (outProbFile , ">probFile.txt");
-dbmopen (my %DATA , "probFileHash",0644) or die "can't open dbm!";
-dbmopen (my %uniModel , "uniModel",0644) or die "can't  touch  dbm!";
+dbmopen (my %DATA , "probFile.gdbm",0644) or die "can't open dbm!";
+dbmopen (my %uniModel , "uniModel.gdbm",0644) or die "can't  touch  dbm!";
 
 #sort the number of lottery by increase.
 while(<txtFile>)
