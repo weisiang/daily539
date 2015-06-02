@@ -51,3 +51,4 @@ while(<tempFile>)
 	}
 }
 system "rm tempNumberOut";
+close(tempFile);
