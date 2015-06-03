@@ -84,7 +84,7 @@ while(<Get5>)
 								$top1 = $predictResult{$resultList};
 							}
 							$process+=1;
-							if($process%19876903==0)
+							if($process%690908==0)
 							{
 							$percent++;	
 							printf "%s%s\n" , $percent, '%';
